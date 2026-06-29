@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jnlp codebase="https://jharkhandtenders.gov.in/nicgep">
+	<information>
+		<title>e-Procurement</title>
+		<vendor>NIC</vendor>
+		<homepage>https://jharkhandtenders.gov.in/nicgep</homepage>
+		<description>e-Procurement Signing Application</description>
+	</information>
+	<security>
+		<all-permissions />
+	</security>
+	<resources>
+		<j2se version="1.6+" />
+		<jar href="DataSigner.jar" main="true" />
+	</resources>
+	<application-desc main-class="gov.nic.verifyDsc.gui.VerifyDSC">
+		<argument>aHR0cHM6Ly9qaGFya2hhbmR0ZW5kZXJzLmdvdi5pbi9uaWNnZXAvam5scC1wcm9jZXNzb3Iv</argument>
+		<argument>b00821d926d464914cb017698aabe877</argument>
+	</application-desc>
+</jnlp>

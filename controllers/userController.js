@@ -4,7 +4,7 @@ export const createEmployee = async (req, res) => {
   try {
     const employee = await Employee.create({
       ...req.body,
-      profileImage: req.file ? req.file.path : "",
+      profileImage: req.file ? `${process.env.BASE_URL}/${req.file.path}` : "",
     });
     res.status(201).json({
       success: true,
@@ -87,7 +87,7 @@ export const filterEmployees = async (req, res) => {
 };
 export const updateEmployee = async (req, res) => {
   try {
-    const employee = await Employee.findByIdAndUpdate(req.params, req.body, {
+    const employee = await Employee.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
     });
     if (!employee) {
@@ -95,9 +95,10 @@ export const updateEmployee = async (req, res) => {
         message: "Employee not found",
       });
     }
-    res.status(201).json({
+    res.status(200).json({
       success: true,
       data: employee,
+      message: "Employee updated",
     });
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });

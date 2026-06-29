@@ -9,7 +9,10 @@ const Port = process.env.PORT || 5000;
 app.use(express.json());
 
 app.use("/api/employee", router);
-
+app.use("/uploads", express.static("uploads"));
+app.get("/", (req, res) => {
+  res.send("Employee API is running...");
+});
 app.listen(Port, () => {
   console.log("Server is connected");
 });
