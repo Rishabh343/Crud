@@ -1,23 +1,30 @@
 import Employee from "../models/userModel.js";
-
+import dotenv from "dotenv";
+dotenv.config();
 export const createEmployee = async (req, res) => {
   try {
     const employee = await Employee.create({
       ...req.body,
-      profileImage: req.file ? `${process.env.BASE_URL}/${req.file.path}` : "",
+      profileImage: req.file
+        ? `${process.env.BASE_URL}/uploads/${req.file.filename}`
+        : "",
     });
+
     res.status(201).json({
       success: true,
       data: employee,
     });
   } catch (error) {
-    res.status(500).json({ success: false, message: error.message });
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
   }
 };
 export const getEmployee = async (req, res) => {
   try {
     const employees = await Employee.find();
-    res.status(201).json({
+    res.status(200).json({
       success: true,
       data: employees,
     });
@@ -106,7 +113,7 @@ export const updateEmployee = async (req, res) => {
 };
 export const deleteEmployee = async (req, res) => {
   try {
-    const employee = await Employee.findByIdAndDelete(req.params);
+    const employee = await Employee.findByIdAndDelete(req.params.id);
     if (!employee) {
       return res.status(404).json({
         message: "Employee not found",
