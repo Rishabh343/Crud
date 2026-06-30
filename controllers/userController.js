@@ -1,8 +1,10 @@
 import Employee from "../models/userModel.js";
 import dotenv from "dotenv";
 dotenv.config();
+
 export const createEmployee = async (req, res) => {
   try {
+    console.log(process.env.BASE_URL);
     const employee = await Employee.create({
       ...req.body,
       profileImage: req.file
