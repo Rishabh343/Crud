@@ -11,11 +11,10 @@ const userSchema = new mongoose.Schema(
       trim: true,
       enum: { values: ["Engineering", "Sales", "Marketing", "HR"] },
     },
-    designation: { type: String, required: true, trim: true },
-    salary: {
-      type: Number,
-      required: true,
-    },
+    // designation: { type: String, trim: true },
+    // salary: {
+    //   type: Number,
+    // },
     profileImage: {
       type: String,
       default: "",

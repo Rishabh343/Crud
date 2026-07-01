@@ -1,7 +1,6 @@
 import Employee from "../models/userModel.js";
 import dotenv from "dotenv";
-dotenv.config();
-
+dotenv.config();                            
 export const createEmployee = async (req, res) => {
   try {
     console.log(process.env.BASE_URL);
@@ -23,6 +22,7 @@ export const createEmployee = async (req, res) => {
     });
   }
 };
+
 export const getEmployee = async (req, res) => {
   try {
     const employees = await Employee.find();
@@ -106,7 +106,6 @@ export const updateEmployee = async (req, res) => {
     }
     res.status(200).json({
       success: true,
-      data: employee,
       message: "Employee updated",
     });
   } catch (error) {
